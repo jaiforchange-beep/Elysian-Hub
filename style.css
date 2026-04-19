@@ -1,1 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=JetBrains+Mono:wght@500&display=swap');
 
+html, body { background: #efb93a; margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; overflow-x: hidden; }
+
+/* Page Navigation Fix */
+.page { display: none; min-height: 100vh; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; }
+.page.active { display: flex !important; }
+
+.neon-light {
+    width: 14px; height: 14px; background-color: #39ff14; border-radius: 50%;
+    box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14; 
+    display: inline-block; margin-right: 8px;
+}
+.green-glow { color: #1fb300; font-weight: bold; text-shadow: 0 0 5px #39ff14; }
+.quote-box { font-style: italic; color: #444; margin: 15px 0; font-size: 1rem; font-weight: 600; }
+
+.bubbly-card { 
+    background: white; border: 4px solid black; border-radius: 40px; padding: 30px; 
+    width: 95%; max-width: 800px; box-shadow: 10px 10px 0px rgba(0,0,0,0.1); text-align: center; position: relative;
+}
+.wide-card { max-width: 1000px; }
+
+.modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;
+}
+.modal-overlay.active { display: flex; }
+
+.main-logo { width: 150px; cursor: pointer; transition: 0.2s; }
+.main-logo:hover { transform: scale(1.1); }
+.time-large { font-family: 'JetBrains Mono'; font-size: 3.5rem; font-weight: bold; }
+.time-small { font-family: 'JetBrains Mono'; color: #888; font-size: 1.5rem; }
+
+button { background: white; border: 3px solid black; border-radius: 20px; padding: 10px 20px; font-weight: bold; cursor: pointer; margin: 5px; font-family: inherit; }
+.round-input, .red-note { width: 100%; padding: 12px; border-radius: 20px; border: 3px solid black; margin: 5px 0; box-sizing: border-box; font-family: inherit; }
+.red-note { border-color: red; color: red; height: 60px; resize: none; }
+.small-box { width: 50px; border: 2px solid black; border-radius: 10px; text-align: center; }
+
+.chat-box { height: 250px; overflow-y: auto; border: 2px solid black; border-radius: 15px; padding: 15px; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; }
+.item-list { width: 100%; margin-top: 20px; }
+.q-row { border: 2px solid black; padding: 10px; display: flex; justify-content: space-between; align-items: center; background: #fff; border-radius: 15px; margin-bottom: 5px; }
+.remove-btn { background: #ff4444 !important; color: white !important; font-size: 0.7rem; padding: 5px 10px; }
+.emoji-btns span { font-size: 1.5rem; cursor: pointer; opacity: 0.3; filter: grayscale(1); padding: 0 5px; }
+.emoji-btns span.active { opacity: 1; filter: grayscale(0); transform: scale(1.2); display: inline-block; }
