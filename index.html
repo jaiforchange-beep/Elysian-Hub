@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE Aetheris AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div id="home-page" class="page active">
+        <div class="bubbly-card">
+            <div class="status-zone">
+                <div class="neon-light"></div>
+                <span class="status-text">STATUS: <span class="green-glow">ONLINE</span></span>
+            </div>
+            <h1 class="site-title">THE ELYSIAN HUB</h1>
+            <div class="quote-box">"With great power there must also come—great responsibility!" – Stan Lee</div>
+            
+            <div class="logo-wrap">
+                <img src="https://codehs.com/uploads/5f6d7666ba62909a497cd2abe90cf32f" class="main-logo" onclick="navigate('simple-clock-page')">
+            </div>
+            
+            <div class="nav-grid">
+                <button onclick="navigate('full-clock-page')">Clock Hub</button>
+                <button onclick="navigate('career-page')">Career</button>
+                <button onclick="navigate('schedule-page')">Schedule</button>
+                <button onclick="navigate('goals-page')">Goals</button>
+                <button onclick="navigate('wishlist-page')">Wishlist</button>
+                <button onclick="navigate('history-page')">History</button>
+                <button class="ai-nav-btn" onclick="navigate('ai-page')">AI COMMAND</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="simple-clock-page" class="page">
+        <div class="bubbly-card">
+            <span class="edge-back" onclick="navigate('home-page')">← BACK</span>
+            <div class="time-large"><span id="sc-main">00:00:00</span><span id="sc-ms" class="time-small">.00</span></div>
+            <div id="sc-date" class="date-display">DATE</div>
+        </div>
+    </div>
+
+    <div id="full-clock-page" class="page">
+        <div class="bubbly-card">
+            <span class="edge-back" onclick="navigate('home-page')">← BACK</span>
+            <div class="time-large"><span id="hub-main-time">00:00:00</span><span id="hub-ms-time" class="time-small">.00</span></div>
+            <hr>
+            <div class="tool-split">
+                <div class="tool-box">
+                    <h3>STOPWATCH</h3>
+                    <div id="sw-display" class="time-hub">00:00:00.00</div>
+                    <button onclick="startSw()">START</button>
+                    <button onclick="stopSw()">STOP</button>
+                    <button onclick="resetSw()">RESET</button>
+                </div>
+                <div class="tool-box">
+                    <h3>TIMER</h3>
+                    <div id="timer-display" class="time-hub">00:00:00</div>
+                    <div class="timer-inputs">
+                        <input type="number" id="th" placeholder="H" class="small-box">
+                        <input type="number" id="tm" placeholder="M" class="small-box">
+                        <input type="number" id="ts" placeholder="S" class="small-box">
+                    </div>
+                    <button onclick="handleTimerStart()">START TIMER</button>
+                </div>
+            </div>
+            <button id="stop-alarm" class="alarm-btn" style="display:none; margin-top:20px;">STOP ALARM</button>
+        </div>
+    </div>
+
+    <div id="career-page" class="page">
+        <div class="bubbly-card wide-card">
+            <span class="edge-back" onclick="navigate('home-page')">← BACK</span>
+            <h2>CAREER ASSESSMENT</h2>
+            <div id="career-grid" class="no-scroll-grid"></div>
+            <div class="career-footer">
+                <button onclick="showCareerModal('later')">FINISH LATER</button>
+                <button onclick="changeCareerPage(-1)">PREV</button>
+                <span id="cp-num">1 / 3</span>
+                <button onclick="changeCareerPage(1)">NEXT</button>
+                <button onclick="showCareerModal('finish')">FINISH</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="career-modal" class="modal-overlay">
+        <div class="modal-content bubbly-card">
+            <h3 id="modal-title">Notice</h3>
+            <p id="modal-text"></p>
+            <div id="modal-buttons"></div>
+        </div>
+    </div>
+
+    <div id="schedule-page" class="page">
+        <div class="bubbly-card">
+            <span class="edge-back" onclick="navigate('home-page')">← BACK</span>
+            <h2>SCHEDULE</h2>
+            <div class="input-stack">
+                <input type="text" id="sc-task" class="round-input" placeholder="Task Name">
+                <input type="time" id="sc-time" class="round-input">
+                <textarea id="sc-note" class="red-note" placeholder="Note..."></textarea>
+                <button onclick="addSchedule()">ADD TASK</button>
+            </div>
+            <div id="schedule-list" class="item-list"></div>
+        </div>
+    </div>
+
+    <div id="goals-page" class="page">
+        <div class="bubbly-card">
+            <span class="edge-back" onclick="navigate('home-page')">← BACK</span>
+            <h2>GOALS</h2>
+            <div class="input-stack">
+                <input type="text" id="g-task" class="round-input" placeholder="Goal Name">
+                <input type="date" id="g-date" class="round-input">
+                <button onclick="addGoal()">ADD GOAL</button>
+            </div>
+            <div id="goal-list" class="item-list"></div>
+        </div>
+    </div>
+
+    <div id="wishlist-page" class="page">
+        <div class="bubbly-card">
+            <span class="edge-back" onclick="navigate('home-page')">← BACK</span>
+            <h2>WISHLIST</h2>
+            <div class="input-stack">
+                <input type="text" id="w-item" class="round-input" placeholder="Item Name">
+                <input type="text" id="w-why" class="round-input" placeholder="Why?">
+                <button onclick="addWish()">ADD ITEM</button>
+            </div>
+            <div id="wish-list" class="item-list"></div>
+        </div>
+    </div>
+
+    <div id="history-page" class="page">
+        <div class="bubbly-card">
+            <span class="edge-back" onclick="navigate('home-page')">← BACK</span>
+            <h2>HUB HISTORY</h2>
+            <button onclick="clearHistory()" style="background:#ff4444; color:white;">CLEAR HISTORY</button>
+            <div id="history-content" class="item-list"></div>
+        </div>
+    </div>
+
+    <div id="ai-page" class="page">
+        <div class="bubbly-card">
+            <span class="edge-back" onclick="navigate('home-page')">← BACK</span>
+            <h2>AETHER AI</h2>
+            <div id="ai-chat" class="chat-box"></div>
+            <div class="input-stack">
+                <input type="text" id="ai-cmd" class="round-input" placeholder="Command Aether...">
+                <button onclick="runAi()">SEND</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
